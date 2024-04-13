@@ -1,15 +1,15 @@
-import hero from "/assets/images/img_hero.png"
+import hero from "/assets/images/img_hero.jpeg"
 
 export const heroImg = hero
 
 import hmv from "/assets/videos/vid_hero.mp4"
 import smallmv from "/assets/videos/vid_smallHero.mp4"
-import highlightFirstmv from "/assets/videos/vid_highlight-first.mp4"
-import highlightSectmv from "/assets/videos/vid_highlight-sec.mp4"
-import highlightThirdmv from "/assets/videos/vid_highlight-third.mp4"
-import highlightFourthmv from "/assets/videos/vid_highlight-fourth.mp4"
+import highlightFirstmv from "/assets/videos/vid_hightlight-first.mp4"
+import highlightSectmv from "/assets/videos/vid_hightlight-sec.mp4"
+import highlightThirdmv from "/assets/videos/vid_hightlight-third.mp4"
+import highlightFourthmv from "/assets/videos/vid_hightlight-fourth.mp4"
 import exploremv from "/assets/videos/vid_explore.mp4"
-import framemv from "/assets/videos/frame.mp4"
+import framemv from "/assets/videos/vid_frame.mp4"
 
 export const heroVideo = hmv
 export const smallHeroVideo = smallmv
@@ -38,13 +38,13 @@ export const replayImg = replay
 export const playImg = play
 export const pauseImg = pause
 
-import yellow from "/assets/images/img_yellow.png"
-import blue from "/assets/images/img_blue.png"
-import white from "/assets/images/img_white.png"
-import black from "/assets/images/img_black.png"
-import explore1 from "/assets/images/img_explore1.png"
-import explore2 from "/assets/images/img_explore2.png"
-import chip from "/assets/images/img_chip.png"
+import yellow from "/assets/images/img_yellow.jpg"
+import blue from "/assets/images/img_blue.jpg"
+import white from "/assets/images/img_white.jpg"
+import black from "/assets/images/img_black.jpg"
+import explore1 from "/assets/images/img_explore1.jpg"
+import explore2 from "/assets/images/img_explore2.jpg"
+import chip from "/assets/images/img_chip.jpeg"
 import frame from "/assets/images/img_frame.png"
 
 export const yellowImg = yellow
