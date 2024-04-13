@@ -1,3 +1,12 @@
+import { Hero, Highlights, Model, Navbar } from "./components"
+
 export default function App() {
-    return <div className="text-3xl font-bold underline text-green-500">App</div>
+    return (
+        <main className="bg-black">
+            <Navbar />
+            <Hero />
+            <Highlights />
+            <Model />
+        </main>
+    )
 }
