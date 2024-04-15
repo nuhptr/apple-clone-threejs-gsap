@@ -54,11 +54,11 @@ canvas {
         @apply flex items-center justify-center px-4 py-4 bg-gray-300 rounded-full backdrop-blur;
     }
 
-    .size-btn-container {
-        @apply flex items-center justify-center gap-1 p-1 ml-3 bg-gray-300 rounded-full backdrop-blur;
-    }
     .btn {
         @apply px-5 py-2 my-5 border border-transparent rounded-3xl bg-blue hover:bg-transparent hover:border hover:text-blue hover:border-blue;
+    }
+    .size-btn-container {
+        @apply flex items-center justify-center gap-1 p-1 ml-3 bg-gray-300 rounded-full backdrop-blur;
     }
     .size-btn {
         @apply flex items-center justify-center w-10 h-10 text-sm text-black transition-all bg-white rounded-full;
