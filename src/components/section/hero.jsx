@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
 
 import { heroVideo, smallHeroVideo } from "../../utils"
 
-export default function Hero() {
+const Hero = () => {
     const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo)
 
     const handleVideoSrcSet = () => {
@@ -19,8 +19,8 @@ export default function Hero() {
     }, [])
 
     useGSAP(() => {
-        gsap.to("#hero", { opacity: 1, delay: 1.5 })
-        gsap.to("#cta", { opacity: 1, translateY: -50, delay: 1.5 })
+        gsap.to("#hero", { opacity: 1, delay: 2 })
+        gsap.to("#cta", { opacity: 1, y: -50, delay: 2 })
     }, [])
 
     return (
@@ -33,6 +33,7 @@ export default function Hero() {
                     <video
                         className="pointer-events-none"
                         autoPlay
+                        loop
                         muted
                         playsInline={true}
                         key={videoSrc}>
@@ -41,7 +42,7 @@ export default function Hero() {
                 </div>
             </div>
 
-            <div id="cta" className="flex flex-col items-center opacity-0 translate-y-20">
+            <div id="cta" className="flex flex-col items-center translate-y-20 opacity-0">
                 <a href="#highlights" className="btn">
                     Buy
                 </a>
@@ -50,3 +51,5 @@ export default function Hero() {
         </section>
     )
 }
+
+export default Hero
