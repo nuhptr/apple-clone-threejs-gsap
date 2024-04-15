@@ -1,6 +1,6 @@
 import gsap from "gsap"
-import { ScrollTrigger } from "gsap/all"
 
+import { ScrollTrigger } from "gsap/all"
 gsap.registerPlugin(ScrollTrigger)
 
 export function animateWithGsap(target, animationProps, scrollProps) {
@@ -29,13 +29,23 @@ export function animateWithGsapTimeline(
       ease: "power2.inOut",
    })
 
-   timeline.to(firstTarget, {
-      ...animationProps,
-      ease: "power2.inOut",
-   })
+   timeline.to(
+      firstTarget,
+      {
+         ...animationProps,
+         ease: "power2.inOut",
+      },
+      // start immediately after the rotation
+      "<"
+   )
 
-   timeline.to(secondTarget, {
-      ...animationProps,
-      ease: "power2.inOut",
-   })
+   timeline.to(
+      secondTarget,
+      {
+         ...animationProps,
+         ease: "power2.inOut",
+      },
+      // start immediately after the first target
+      "<"
+   )
 }

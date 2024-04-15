@@ -100,6 +100,7 @@ export default function Model() {
 
                <div className="w-full mx-auto">
                   <p className="mb-5 text-sm font-light text-center">{model.title}</p>
+
                   <div className="flex-center">
                      <ul className="color-container">
                         {models.map((item, i) => (

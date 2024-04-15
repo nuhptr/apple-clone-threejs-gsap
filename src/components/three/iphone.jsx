@@ -141,6 +141,7 @@ export default function Model(props) {
             scale={0.01}
          />
 
+         {/* add mesh standard material */}
          <mesh
             castShadow
             receiveShadow

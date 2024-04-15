@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from "gsap/all"
 
+import { ScrollTrigger } from "gsap/all"
 gsap.registerPlugin(ScrollTrigger)
 
 import { hightlightsSlides } from "../../constant"
@@ -12,6 +12,8 @@ const VideoCarousel = () => {
    const videoRef = useRef([])
    const videoSpanRef = useRef([])
    const videoDivRef = useRef([])
+
+   const [loadedData, setLoadedData] = useState([])
 
    // video and indicator
    const [video, setVideo] = useState({
@@ -24,8 +26,6 @@ const VideoCarousel = () => {
 
    const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video
 
-   const [loadedData, setLoadedData] = useState([])
-
    useGSAP(() => {
       // slider animation to move the video out of the screen and bring the next video in
       gsap.to("#slider", {
@@ -36,7 +36,10 @@ const VideoCarousel = () => {
 
       // video animation to play the video when it is in the view
       gsap.to("#video", {
-         scrollTrigger: { trigger: "#video", toggleActions: "restart none none none" },
+         scrollTrigger: {
+            trigger: "#video",
+            toggleActions: "restart none none none",
+         },
          onComplete: () => {
             setVideo((prev) => ({ ...prev, startPlay: true, isPlaying: true }))
          },
@@ -56,7 +59,6 @@ const VideoCarousel = () => {
 
                if (progress != currentProgress) {
                   currentProgress = progress
-
                   // set the width of the progress bar
                   gsap.to(videoDivRef.current[videoId], {
                      width:
@@ -66,7 +68,6 @@ const VideoCarousel = () => {
                            ? "10vw" // tablet
                            : "4vw", // laptop
                   })
-
                   // set the background color of the progress bar
                   gsap.to(span[videoId], {
                      width: `${currentProgress}%`,
@@ -74,7 +75,6 @@ const VideoCarousel = () => {
                   })
                }
             },
-
             // when the video is ended, replace the progress bar with the indicator and change the background color
             onComplete: () => {
                if (isPlaying) {
@@ -88,9 +88,7 @@ const VideoCarousel = () => {
             },
          })
 
-         if (videoId == 0) {
-            anim.restart()
-         }
+         if (videoId == 0) anim.restart()
 
          // update the progress bar
          const animUpdate = () => {
@@ -122,29 +120,24 @@ const VideoCarousel = () => {
          case "video-end":
             setVideo((prev) => ({ ...prev, isEnd: true, videoId: i + 1 }))
             break
-
          case "video-last":
             setVideo((prev) => ({ ...prev, isLastVideo: true }))
             break
-
          case "video-reset":
             setVideo((prev) => ({ ...prev, videoId: 0, isLastVideo: false }))
             break
-
          case "pause":
             setVideo((prev) => ({ ...prev, isPlaying: !prev.isPlaying }))
             break
-
          case "play":
             setVideo((prev) => ({ ...prev, isPlaying: !prev.isPlaying }))
             break
-
          default:
             return video
       }
    }
 
-   const handleLoadedMetaData = (i, e) => setLoadedData((prev) => [...prev, e])
+   const handleLoadedMetaData = (_i, e) => setLoadedData((prev) => [...prev, e])
 
    return (
       <>

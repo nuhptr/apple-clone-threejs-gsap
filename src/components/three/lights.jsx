@@ -1,6 +1,6 @@
 import { Environment, Lightformer } from "@react-three/drei"
 
-export default function Lights() {
+const Lights = () => {
    return (
       // group different lights and lightformers. We can use group to organize lights, cameras, meshes, and other objects in the scene.
       <group name="lights">
@@ -69,3 +69,5 @@ export default function Lights() {
       </group>
    )
 }
+
+export default Lights
