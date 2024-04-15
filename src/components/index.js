@@ -14,16 +14,16 @@ import Lights from "./three/lights"
 import ModelView from "./three/model-view"
 
 export {
-    Features,
-    Footer,
-    Hero,
-    Highlights,
-    HowItWorks,
-    IPhone,
-    Lights,
-    Loader,
-    Model,
-    ModelView,
-    Navbar,
-    VideoCarousel,
+   Features,
+   Footer,
+   Hero,
+   Highlights,
+   HowItWorks,
+   IPhone,
+   Lights,
+   Loader,
+   Model,
+   ModelView,
+   Navbar,
+   VideoCarousel,
 }
