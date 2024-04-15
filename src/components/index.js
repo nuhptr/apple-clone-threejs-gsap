@@ -1,15 +1,17 @@
 import Hero from "./section/hero"
 import Navbar from "./section/navbar"
 import Highlights from "./section/highlights"
-import Model from "./section/model"
 import Footer from "./section/footer"
-import Features from "./features"
-import HowItWorks from "./how-it-work"
-import Iphone from "./iphone"
-import Lights from "./lights"
-import Loader from "./loader"
-import ModelView from "./model-view"
-import VideoCarousel from "./video-carousel"
+import Features from "./section/features"
+import HowItWorks from "./section/how-it-work"
+
+import Loader from "./ui/loader"
+import VideoCarousel from "./ui/video-carousel"
+
+import Model from "./three/model"
+import IPhone from "./three/iphone"
+import Lights from "./three/lights"
+import ModelView from "./three/model-view"
 
 export {
     Features,
@@ -17,7 +19,7 @@ export {
     Hero,
     Highlights,
     HowItWorks,
-    Iphone,
+    IPhone,
     Lights,
     Loader,
     Model,
