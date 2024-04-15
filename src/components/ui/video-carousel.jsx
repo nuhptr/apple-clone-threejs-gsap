@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-
 import { ScrollTrigger } from "gsap/all"
+
 gsap.registerPlugin(ScrollTrigger)
 
-import { hightlightsSlides } from "../constant"
-import { pauseImg, playImg, replayImg } from "../utils"
+import { hightlightsSlides } from "../../constant"
+import { pauseImg, playImg, replayImg } from "../../utils"
 
 export default function VideoCarousel() {
     const videoRef = useRef([])
@@ -38,7 +38,7 @@ export default function VideoCarousel() {
         gsap.to("#video", {
             scrollTrigger: { trigger: "#video", toggleActions: "restart none none none" },
             onComplete: () => {
-                setVideo((prevState) => ({ ...prevState, startPlay: true, isPlaying: true }))
+                setVideo((prev) => ({ ...prev, startPlay: true, isPlaying: true }))
             },
         })
     }, [isEnd, videoId])
@@ -50,17 +50,6 @@ export default function VideoCarousel() {
         if (span[videoId]) {
             // animation to move the indicator
             let anim = gsap.to(span[videoId], {
-                // when the video is ended, replace the progress bar with the indicator and change the background color
-                onComplete: () => {
-                    if (isPlaying) {
-                        gsap.to(videoDivRef.current[videoId], {
-                            width: "12px",
-                        })
-                        gsap.to(span[videoId], {
-                            backgroundColor: "#afafaf",
-                        })
-                    }
-                },
                 onUpdate: () => {
                     // get the progress of the video
                     const progress = Math.ceil(anim.progress() * 100)
@@ -85,12 +74,26 @@ export default function VideoCarousel() {
                         })
                     }
                 },
+
+                // when the video is ended, replace the progress bar with the indicator and change the background color
+                onComplete: () => {
+                    if (isPlaying) {
+                        gsap.to(videoDivRef.current[videoId], {
+                            width: "12px",
+                        })
+                        gsap.to(span[videoId], {
+                            backgroundColor: "#afafaf",
+                        })
+                    }
+                },
             })
 
-            if (videoId == 0) anim.restart()
+            if (videoId == 0) {
+                anim.restart()
+            }
 
             // update the progress bar
-            const animUpdate = function () {
+            const animUpdate = () => {
                 anim.progress(
                     videoRef.current[videoId].currentTime / hightlightsSlides[videoId].videoDuration
                 )
@@ -104,7 +107,7 @@ export default function VideoCarousel() {
                 gsap.ticker.remove(animUpdate)
             }
         }
-    }, [videoId, startPlay, isPlaying])
+    }, [videoId, startPlay])
 
     useEffect(() => {
         if (loadedData.length > 3) {
@@ -114,31 +117,34 @@ export default function VideoCarousel() {
     }, [startPlay, videoId, isPlaying, loadedData])
 
     // vd id is the id for every video until id becomes number 3
-    function handleProcess(type, i) {
+    const handleProcess = (type, i) => {
         switch (type) {
             case "video-end":
-                setVideo((prevState) => ({ ...prevState, isEnd: true, videoId: i + 1 }))
+                setVideo((pre) => ({ ...pre, isEnd: true, videoId: i + 1 }))
                 break
+
             case "video-last":
-                setVideo((prevState) => ({ ...prevState, isLastVideo: true }))
+                setVideo((pre) => ({ ...pre, isLastVideo: true }))
                 break
+
             case "video-reset":
-                setVideo((prevState) => ({ ...prevState, videoId: 0, isLastVideo: false }))
+                setVideo((pre) => ({ ...pre, videoId: 0, isLastVideo: false }))
                 break
+
             case "pause":
-                setVideo((prevState) => ({ ...prevState, isPlaying: !prevState.isPlaying }))
+                setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }))
                 break
+
             case "play":
-                setVideo((prevState) => ({ ...prevState, isPlaying: !prevState.isPlaying }))
+                setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }))
                 break
+
             default:
                 return video
         }
     }
 
-    function handleLoadedMetaData(_index, event) {
-        return setLoadedData((prevState) => [...prevState, event])
-    }
+    const handleLoadedMetaData = (i, e) => setLoadedData((prev) => [...prev, e])
 
     return (
         <>
@@ -150,24 +156,19 @@ export default function VideoCarousel() {
                                 <video
                                     id="video"
                                     playsInline={true}
-                                    className={`
-                                    ${list.id === 2 && "translate-x-44"} pointer-events-none`}
+                                    className={`${
+                                        list.id === 2 && "translate-x-44"
+                                    } pointer-events-none`}
                                     preload="auto"
                                     muted
-                                    ref={(element) => (videoRef.current[i] = element)}
-                                    onPlay={() =>
-                                        setVideo(function (prevState) {
-                                            return { ...prevState, isPlaying: true }
-                                        })
-                                    }
+                                    ref={(el) => (videoRef.current[i] = el)}
                                     onEnded={() =>
                                         i !== 3
                                             ? handleProcess("video-end", i)
                                             : handleProcess("video-last")
                                     }
-                                    onLoadedMetadata={function (event) {
-                                        return handleLoadedMetaData(i, event)
-                                    }}>
+                                    onPlay={() => setVideo((pre) => ({ ...pre, isPlaying: true }))}
+                                    onLoadedMetadata={(e) => handleLoadedMetaData(i, e)}>
                                     <source src={list.video} type="video/mp4" />
                                 </video>
                             </div>
@@ -190,10 +191,10 @@ export default function VideoCarousel() {
                         <span
                             key={i}
                             className="relative w-3 h-3 mx-2 bg-gray-200 rounded-full cursor-pointer"
-                            ref={(element) => (videoDivRef.current[i] = element)}>
+                            ref={(el) => (videoDivRef.current[i] = el)}>
                             <span
                                 className="absolute w-full h-full rounded-full"
-                                ref={(element) => (videoSpanRef.current[i] = element)}
+                                ref={(el) => (videoSpanRef.current[i] = el)}
                             />
                         </span>
                     ))}
