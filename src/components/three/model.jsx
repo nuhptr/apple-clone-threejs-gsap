@@ -12,7 +12,7 @@ import { animateWithGsapTimeline } from "../../utils/animations"
 
 import { ModelView } from "../index"
 
-export default function Model() {
+const Model = () => {
    const [size, setSize] = useState("small")
    const [model, setModel] = useState({
       title: "iPhone 15 Pro in Natural Titanium",
@@ -134,3 +134,5 @@ export default function Model() {
       </section>
    )
 }
+
+export default Model

@@ -7,7 +7,7 @@ import { heroVideo, smallHeroVideo } from "../../utils"
 const Hero = () => {
    const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo)
 
-   const handleVideoSrcSet = () => {
+   function handleVideoSrcSet() {
       if (window.innerWidth < 760) setVideoSrc(smallHeroVideo)
       else setVideoSrc(heroVideo)
    }

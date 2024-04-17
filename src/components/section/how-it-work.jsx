@@ -10,10 +10,7 @@ const HowItWorks = () => {
 
    useGSAP(() => {
       gsap.from("#chip", {
-         scrollTrigger: {
-            trigger: "#chip",
-            start: "20% bottom",
-         },
+         scrollTrigger: { trigger: "#chip", start: "20% bottom" },
          opacity: 0,
          scale: 2,
          duration: 2,

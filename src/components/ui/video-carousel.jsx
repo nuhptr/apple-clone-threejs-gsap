@@ -115,7 +115,7 @@ const VideoCarousel = () => {
    }, [startPlay, videoId, isPlaying, loadedData])
 
    // vd id is the id for every video until id becomes number 3
-   const handleProcess = (type, i) => {
+   function handleProcess(type, i) {
       switch (type) {
          case "video-end":
             setVideo((prev) => ({ ...prev, isEnd: true, videoId: i + 1 }))
@@ -137,7 +137,9 @@ const VideoCarousel = () => {
       }
    }
 
-   const handleLoadedMetaData = (_i, e) => setLoadedData((prev) => [...prev, e])
+   function handleLoadedMetaData(_i, e) {
+      return setLoadedData((prev) => [...prev, e])
+   }
 
    return (
       <>
