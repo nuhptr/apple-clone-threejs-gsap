@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger)
 import { hightlightsSlides } from "../../constant"
 import { pauseImg, playImg, replayImg } from "../../utils"
 
-const VideoCarousel = () => {
+export default function VideoCarousel() {
    const videoRef = useRef([])
    const videoSpanRef = useRef([])
    const videoDivRef = useRef([])
@@ -208,5 +208,3 @@ const VideoCarousel = () => {
       </>
    )
 }
-
-export default VideoCarousel

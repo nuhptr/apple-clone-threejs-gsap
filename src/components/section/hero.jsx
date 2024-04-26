@@ -4,7 +4,7 @@ import gsap from "gsap"
 
 import { heroVideo, smallHeroVideo } from "../../utils"
 
-const Hero = () => {
+export default function Hero() {
    const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo)
 
    function handleVideoSrcSet() {
@@ -51,5 +51,3 @@ const Hero = () => {
       </section>
    )
 }
-
-export default Hero

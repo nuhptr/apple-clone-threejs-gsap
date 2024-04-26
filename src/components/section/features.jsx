@@ -5,7 +5,7 @@ import gsap from "gsap"
 import { explore1Img, explore2Img, exploreVideo } from "../../utils"
 import { animateWithGsap } from "../../utils/animations"
 
-const Features = () => {
+export default function Features() {
    const videoRef = useRef()
 
    useGSAP(() => {
@@ -95,5 +95,3 @@ const Features = () => {
       </section>
    )
 }
-
-export default Features

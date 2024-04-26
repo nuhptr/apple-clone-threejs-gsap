@@ -5,7 +5,7 @@ import gsap from "gsap"
 import { chipImg, frameImg, frameVideo } from "../../utils"
 import { animateWithGsap } from "../../utils/animations"
 
-const HowItWorks = () => {
+export default function HowItWorks() {
    const videoRef = useRef()
 
    useGSAP(() => {
@@ -81,5 +81,3 @@ const HowItWorks = () => {
       </section>
    )
 }
-
-export default HowItWorks

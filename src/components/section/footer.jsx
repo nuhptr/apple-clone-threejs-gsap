@@ -1,6 +1,6 @@
 import { footerLinks } from "../../constant"
 
-const Footer = () => {
+export default function Footer() {
    return (
       <footer className="px-5 py-5 sm:px-10">
          <div className="screen-max-width">
@@ -31,5 +31,3 @@ const Footer = () => {
       </footer>
    )
 }
-
-export default Footer

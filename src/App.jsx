@@ -2,7 +2,7 @@ import { Features, Footer, Hero, Highlights, HowItWorks, Model, Navbar } from ".
 
 import * as Sentry from "@sentry/react"
 
-const App = () => {
+function App() {
    return (
       <main className="bg-black">
          <Navbar />

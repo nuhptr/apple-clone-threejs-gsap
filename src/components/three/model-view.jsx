@@ -5,7 +5,15 @@ import { OrbitControls, PerspectiveCamera, View } from "@react-three/drei"
 
 import { Lights, IPhone, Loader } from "../index"
 
-const ModelView = ({ index, groupRef, gsapType, controlRef, setRotationState, item, size }) => {
+export default function ModelView({
+   index,
+   groupRef,
+   gsapType,
+   controlRef,
+   setRotationState,
+   item,
+   size,
+}) {
    return (
       <View
          index={index}
@@ -37,5 +45,3 @@ const ModelView = ({ index, groupRef, gsapType, controlRef, setRotationState, it
       </View>
    )
 }
-
-export default ModelView
